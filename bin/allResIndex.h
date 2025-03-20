@@ -1,9 +1,12 @@
-#ifndef HEADER_ALL2_RES_H
-#define HEADER_ALL2_RES_H
+#ifndef ALL_RES_INDEX_H
+#define ALL_RES_INDEX_H
 
-/// myXXD: "allRes.h"
+/// myXXD-ver:0.2: "allResIndex.h"
 ///----------------------------------------------------------------------------|
 /// Тут все ваши ресурсы.
+///     -   данный хедер участвует в генерации libres.a
+///     -   данный хедер неебходимо подключить к вашему проекту.
+///     -   также необходимо подключить libres.a (с ресами внутри).
 ///----------------------------------------------------------------------------:
 #include <vector>
 #include <string>
@@ -20,19 +23,34 @@ namespace res
     std::ostream& operator<<(std::ostream&, const std::vector<res::Unit*>&);
 
     struct Unit
-    {   const size_t           len ;
+    {
+        ///-------------------|
+        /// Свойства ресурса. |
+        ///-------------------:
+        const size_t           len ;
         const unsigned char*   data;
         const std::string_view path;
 
+        ///-------------------|
+        /// Загребущая лапа.  |
+        ///-------------------:
         static std::vector<Unit*> get(const std::string_view);
 
-        ///---------------|
-        /// Тест разраба. |
-        ///---------------:
+        ///-------------------|
+        /// Тест разраба.     |
+        ///-------------------:
         static void test()
         {
             std::cout << info() << '\n';
+
+            ///----------------------------------|
+            /// Получаем все ресурсы сюда.       |
+            ///----------------------------------:
             std::vector<res::Unit*>  res = Unit::get("");
+
+            ///----------------------------------|
+            /// Манипуляции с ними...            |
+            ///----------------------------------:
             for(const auto& e : res)
             {   for(unsigned i = 0; i < 0x4FF && i < e->len; ++i)
                 {   std::cout << char(e->data[i]);
