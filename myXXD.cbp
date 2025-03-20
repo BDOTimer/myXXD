@@ -27,6 +27,7 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="bin/allRes.h" />
+		<Unit filename="bin/allResIndex.h" />
 		<Unit filename="doc.txt" />
 		<Unit filename="sources/config.h" />
 		<Unit filename="sources/debug.h" />

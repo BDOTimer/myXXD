@@ -34,7 +34,7 @@ namespace res
         ///-------------------|
         /// Загребущая лапа.  |
         ///-------------------:
-        static std::vector<Unit*> get(const std::string_view);
+        static std::vector<Unit*> get(const std::string_view filter);
 
         ///-------------------|
         /// Тест разраба.     |
